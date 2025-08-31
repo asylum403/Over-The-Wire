@@ -42,22 +42,13 @@ Because the filename is a character, which is a placeholder for standard input (
 output the contents of the file, we need to tell cat to treat '-' as a literal filename. We can do this by giving it a path, so ~ 
 expands to the home directory, /home/YOU/-, is what we're saying when we pass the ~/- to cat and finally find our key to the next level!
 
-
-
 ## Find password to Level 2
 
 # Bandit Level 2
+## The key to the next level is in a file called --spaces in this filename-- that lives in the home directory.
+
+This is just like the last one almost, there's symbols and spaces, so we used the last method where we ran ```cat ~/-``` and since ~ isn't a key I use a lot, I wanted to find another way. 
+
+Another method to solve for cat to read the file is replacing the ~ with a . and it would look like this ```cat ./--``` and I simply Tab out to the end of the file name, if you hit Tab once and nothing happens, try using Tab twice in a quick succession and you should see an output of the files that might have naming convention clashes. It's like you cat for a file that has an almost matching name, where the first 8 characters are exactly the same and you've only entered 7 or less characters, then you would need to hit the Tab twice, but if the characters you've entered don't have a match in that directory, a single Tab will autocomplete typing out the name. 
 
 # Bandit Level 3
-
-# Bandit Level 4
-
-# Bandit Level 5
-
-# Bandit Level 6
-
-# Bandit Level 7
-
-# Bandit Level 8
-
-# Bandit Level 9
