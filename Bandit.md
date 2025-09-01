@@ -139,5 +139,30 @@ That's a big step isn't it, let's break it down. We know the file starts with a 
 2. 1033 bytes in size
 3. Not executable
 
+We cd into 'inhere', as the clue says the key is hiding there. A quick ``` ls -1ar ``` and we get see a long list of directories. 
+
+Let's keep things interesting, we have already went into a direcory called 'inhere', then we take a look to see a decent sized list of directories, but no files. Let's peak at one without leaving 'inhere'. ``` ls maybehere11 -1ar ``` you can use whatever number you want, but you'll get an output of that directories contents and not have to change directories multiple times. 
+
+If you want to get deeper, you can absolutely walk through directories using a lot of different commands, I won't say all because I'm only going off of my studying. For the above, we're asking for a list of all things in that directory, once you tab the name out, you'll get the slash '/' and you can hit Tab twice to get an output of other directories. Then you can enter your choice, rinse and repeat. I came across this by using tab to autocomplete stuff in various places a lot, so when I saw this, I was so happy! Such a cool capability. Now back to your regularly scheduled command line lesson.
+
+That's a lot of directories to go through, let's put something together that specicially looks for the 3 requirements. 
+``` find inhere -type f -size 1033c ! -executable -exec file {} + | grep "ASCII text" | awk -F: '{print $1}' | xargs cat ```
+
+As usual, time to get dirty! At the start, we say we want to look for this specific thing and we want to start at the directory 'inhere', but if you remove that, it would execute in whatever directory you run this in. Let's also be sure we're grabbing a file, not a directorye, so set -type to f. 
+
+How the heck do we check for 1033 bytes? Each ASCII character is a byte, so if we said 1033 ASCII characters, it would also equal 1033 bytes. We don't want any executable files, so ! in front of -executable nulls out the executable perms (not runnable by anyone). -exec file {} + runs file on matches in batches, which can be efficient in big directories. 
+
+The last parts should be familiar, we look for human readable with the ASCII text, grab the filename, then send it to cat with xargs. If you did this right, you should have the next key!! 
+
+
+# Bandit Level 6
+## The key is stored somewhere on the server and has all of the following properties:
+1. Owned by user bandit7
+2. Owned by group bandit6
+3. 33 bytes in size
+
+
+
+
 # Bandit Level #
 ## How to find key
