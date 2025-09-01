@@ -53,7 +53,7 @@ This is just like the last one almost, there's symbols and spaces, so we used th
 Another method to solve for cat to read the file is replacing the ~ with a . and it would look like this ```cat ./--``` and I simply Tab out to the end of the file name, if you hit Tab once and nothing happens, try using Tab twice in a quick succession and you should see an output of the files that might have naming convention clashes. It's like you cat for a file that has an almost matching name, where the first 8 characters are exactly the same and you've only entered 7 or less characters, then you would need to hit the Tab twice, but if the characters you've entered don't have a match in that directory, a single Tab will autocomplete typing out the name. 
 
 # Bandit Level 3
-## The password for the next level is stored in a hidden file in the inhere directory.
+## The key for the next level is stored in a hidden file in the inhere directory.
 
 Once in bandit3, let's grab that list. We'll run a ```ls -1a``` and we see a directory named **inhere**.
 
@@ -62,7 +62,7 @@ When we ```ls -1a```, we see ...Hiding-From-You, which doesn't give any issues w
 The key to the next level has been obtained. It's time to continue our quest!
 
 # Bandit Level 4
-## How to find key
+## The key is in a hidden file in the 'inhere' directory. 
 
 # Bandit Level #
 ## How to find key
