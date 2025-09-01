@@ -133,7 +133,11 @@ Let's go a step further, let's output what we need.
 
 That's a big step isn't it, let's break it down. We know the file starts with a dash, so ``` file ./-* ``` looks for all files starting with a dash. The grep is looking for ASCII text, which will be where our key is hiding. The ``` awk ``` splits the line on the colon (so './-file07: ASCII text' becomes './-file07') then passes that filename to cat in ``` xargs cat ```. 
 
-
+# Bandit Level 5
+## The key is stored in a file swomewhere under the inhere directory and has all of the following properties:
+** Human Readable
+** 1033 bytes in size
+** not executable
 
 # Bandit Level #
 ## How to find key
