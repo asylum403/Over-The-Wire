@@ -1,7 +1,5 @@
 # Bandit Level 0
 
-## Testing
-
 ## The answer is in the description and once in, your terminal should show the bandit drawing and ask for your password.
 If your password is correct, you'll see the OTW displayed and a Welcome to OverTheWire! with more information. At the bottom
 you'll notice it say Enjoy your stay! then show you logged in as bandit0@bandit:~$
