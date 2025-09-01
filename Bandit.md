@@ -70,9 +70,37 @@ If we just run the 'ls' in the inhere directory, we get nothing back. Let's add 
 
 We've been runnign the same old stuff so far, so let's change it up. The hint says that we may need commands like file, du, or find, so let's use each one to find our hidden file. 
 
-Let's run ```file .*``` from in the 'inhere' directory and it will bring you the hidden file we're looking for and it also lets you know that it's a ASCII text file, which is good info to have. This means we should be able to cat and read it straight up. You'll notice the .*, the . says to expand to all the dot-files (. and .. are both directories).
+Let's run ``` file .* ``` from in the 'inhere' directory and it will bring you the hidden file we're looking for and it also lets you know that it's a ASCII text file, which is good info to have. This means we should be able to cat and read it straight up. You'll notice the .*, the . says to expand to all the dot-files (. and .. are both directories).
 
-Maybe we want to find a file that has ASCII text, the we run ``` file .* | grep "ASCII text" ```
+Maybe we want to find a file that has ASCII text, the we run ``` file .* | grep "ASCII text" ```, that should output all ASCII text files in that directory. 
+
+Let's work with the power searcher, find. You can as for stuff like name, type, size, and more, so let's get cracking!
+
+We'll run ``` find . -type f -name ".*" ``` and if we run in it without changing directory, it will still do the work we need. That first '.' says we'll be starting our search from the current directory and the -type f says to limit this search to regular files, not directories. Then we want to say search for any hidden files, so that would start with '.' because '.' denotes a hidden file (which was mentioned in the directions).
+
+If you ran that from the directory you start in, your output will have ./inhere/...Hiding-From-You, which is our hidden file. 
+
+Like Mr. Timberlake says, we're bringing sexy back, so let's get spread this out to be even cooler. ``` find . -type f -name ".*" -exec cat {} \; ``` which will run cat on any match and the curly brackets are the placeholder for the file name that makes the match. When you run this from the home directory, you'll get a larger output than if you cd into the inhere directory, then run it.
+
+Now let's check out the du, disk useage, command. Let's start off with ``` du -a ``` and if we run this from that home directory, you'll get an output like this:
+
+4       ./inhere/...Hiding-From-You
+8       ./inhere
+4       ./.profile
+4       ./.bashrc
+4       ./.bash_logout
+24      .
+
+The numbers refer to the size in KB or blocks, just depends on your system. That ...Hiding file looks promising doesn't it. 
+
+Let's add some seasoning to that bland bit of work, ``` du -a | sort -n ```, this will sort the files numerically by size and if any hidden files have something to them, they'll appear here too. 
+
+Any of these methods should help you find the key! Let's keep moving shall we!
+
+# Bandit Level 5
+## The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.
+
+
 
 # Bandit Level #
 ## How to find key
