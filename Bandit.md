@@ -70,7 +70,9 @@ If we just run the 'ls' in the inhere directory, we get nothing back. Let's add 
 
 We've been runnign the same old stuff so far, so let's change it up. The hint says that we may need commands like file, du, or find, so let's use each one to find our hidden file. 
 
-Let's run ```file .*``` from in the 'inhere' directory and it will bring you the hidden file we're looking for and it also lets you know that it's a ASCII text file, which is good info to have. This means we should be able to cat and read it straight up. You'll notice the .*, the . says to expand to all the dot-files (. and .. are both directories)
+Let's run ```file .*``` from in the 'inhere' directory and it will bring you the hidden file we're looking for and it also lets you know that it's a ASCII text file, which is good info to have. This means we should be able to cat and read it straight up. You'll notice the .*, the . says to expand to all the dot-files (. and .. are both directories).
+
+Maybe we want to find a file that has ASCII text, the we run ``` file .* | grep "ASCII text" ```
 
 # Bandit Level #
 ## How to find key
