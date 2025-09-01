@@ -16,6 +16,8 @@ ls -a
 
 ```ls -a``` = do not ignore entries starting with a period, dot, decimal, whatever you want to call this -> .
 
+* Some folks might want a cleaner output, but not all the goodies on the same line. Here's something for those who just want to list out the contents with each line having it's own owner, try ```ls -1a``` 
+
 We could also do:
 ``` ls -lar ```  = 'l' is for the long format, so instead of just names, we can also see permissions, owners, etc. 'a' gets all the files, 
 even the hidden ones. 'r' is just for fun and sets the list in reverse order, putting the '.', &'..' a the bottom of the list instead 
@@ -50,3 +52,16 @@ This is just like the last one almost, there's symbols and spaces, so we used th
 Another method to solve for cat to read the file is replacing the ~ with a . and it would look like this ```cat ./--``` and I simply Tab out to the end of the file name, if you hit Tab once and nothing happens, try using Tab twice in a quick succession and you should see an output of the files that might have naming convention clashes. It's like you cat for a file that has an almost matching name, where the first 8 characters are exactly the same and you've only entered 7 or less characters, then you would need to hit the Tab twice, but if the characters you've entered don't have a match in that directory, a single Tab will autocomplete typing out the name. 
 
 # Bandit Level 3
+## The password for the next level is stored in a hidden file in the inhere directory.
+
+Once in bandit3, let's grab that list. We'll run a ```ls -1a``` and we see a directory named **inhere**.
+
+When we ```ls -1a```, we see ...Hiding-From-You, which doesn't give any issues when you simply cat ...Hiding-From-You. 
+
+The key to the next level has been obtained. It's time to continue our quest!
+
+# Bandit Level 4
+## How to find key
+
+# Bandit Level #
+## How to find key
