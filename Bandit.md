@@ -135,9 +135,9 @@ That's a big step isn't it, let's break it down. We know the file starts with a 
 
 # Bandit Level 5
 ## The key is stored in a file swomewhere under the inhere directory and has all of the following properties:
-⋅⋅⋅⋅* Human Readable
-⋅⋅⋅⋅* 1033 bytes in size
-⋅⋅⋅⋅* not executable
+1. Human Readable
+2. 1033 bytes in size
+3. Not executable
 
 # Bandit Level #
 ## How to find key
