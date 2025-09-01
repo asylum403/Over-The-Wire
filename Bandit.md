@@ -42,8 +42,6 @@ Because the filename is a character, which is a placeholder for standard input (
 output the contents of the file, we need to tell cat to treat '-' as a literal filename. We can do this by giving it a path, so ~ 
 expands to the home directory, /home/YOU/-, is what we're saying when we pass the ~/- to cat and finally find our key to the next level!
 
-## Find password to Level 2
-
 # Bandit Level 2
 ## The key to the next level is in a file called --spaces in this filename-- that lives in the home directory.
 
