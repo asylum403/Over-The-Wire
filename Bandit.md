@@ -100,7 +100,38 @@ Any of these methods should help you find the key! Let's keep moving shall we!
 # Bandit Level 5
 ## The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.
 
+Another set of instructions telling us to find the file in the 'inhere' directory again. It's gotta be human readable, so ASCII text for sure. 
 
+Once we get in the directory 'inhere', we see quite a number of files. They all start with a dash, so 
+
+If you recall on that last one, we used file. File did a great job of telling us what the file type was, so let's run ``` file ./-* ```, this will use file to inspect each file's magic bytes to guess what kind of file it is (ASCII would be human readable, but data would mean binary). That last part, ./-*, will match all the files starting with the - (the ./ prefix avoids shell interpretting the file name as an option flag instead of a possible text file, which would just complain at you that you didn't fulfill the paramaters and sell your soul). 
+
+bandit4@bandit:~/inhere$ file ./-*
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+
+Well, looks like numero 7 is our lucky number! 
+
+There's an even quicker way, ``` file -- -* ```, where the -- is a wildcard that says no more operations, then the -* to check all the files starting with the -. You'll get the same output.
+
+Now, sometimes we want to be fancy, so if you want to get fancy, stick that pinky out and pipe that request to grep so you can auto-filter it. 
+ 
+``` file -- -* | grep "ASCII text" ```
+
+We want to use file here, we're looking for a specific type of file and if we had more directories and wanted to scale this up, we'd use something like ``` for f in ./-*; do file "$f"; done | grep "ASCII text" ```
+
+Let's go a step further, let's output what we need. 
+``` file ./-* | grep "ASCII text" | awk -F: '{print $1}' | xargs cat ```
+
+That's a big step isn't it, let's break it down. We know the file starts with a dash, so ``` file ./-* ``` looks for all files starting with a dash. The grep is looking for ASCII text, which will be where our key is hiding. the awk splits the line on the colon (./-file07: ASCII text, after the filename you get a : before the file type, so './-file07: ASCII text' becomes './-file07') and grabes the file name part 
 
 # Bandit Level #
 ## How to find key
