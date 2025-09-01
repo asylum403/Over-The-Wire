@@ -131,7 +131,7 @@ We want to use file here, we're looking for a specific type of file and if we ha
 Let's go a step further, let's output what we need. 
 ``` file ./-* | grep "ASCII text" | awk -F: '{print $1}' | xargs cat ```
 
-That's a big step isn't it, let's break it down. We know the file starts with a dash, so ``` file ./-* ``` looks for all files starting with a dash. The grep is looking for ASCII text, which will be where our key is hiding. the awk splits the line on the colon (./-file07: ASCII text, after the filename you get a : before the file type, so './-file07: ASCII text' becomes './-file07') and grabes the file name part 
+That's a big step isn't it, let's break it down. We know the file starts with a dash, so ``` file ./-* ``` looks for all files starting with a dash. The grep is looking for ASCII text, which will be where our key is hiding. The ``` awk ``` splits the line on the colon (so './-file07: ASCII text' becomes './-file07') then passes that filename to cat in ``` xargs cat ```. 
 
 # Bandit Level #
 ## How to find key
