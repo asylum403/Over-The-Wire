@@ -64,5 +64,13 @@ The key to the next level has been obtained. It's time to continue our quest!
 # Bandit Level 4
 ## The key is in a hidden file in the 'inhere' directory. 
 
+Time to rock out with the first step, list everything in the directory once we change directory (cd) to the inhere directory. 
+
+If we just run the 'ls' in the inhere directory, we get nothing back. Let's add some options, run ls -1ar and you'll see a file, ...Hiding-From-You. 
+
+We've been runnign the same old stuff so far, so let's change it up. The hint says that we may need commands like file, du, or find, so let's use each one to find our hidden file. 
+
+Let's run ```file .*``` from in the 'inhere' directory and it will bring you the hidden file we're looking for and it also lets you know that it's a ASCII text file, which is good info to have. This means we should be able to cat and read it straight up. You'll notice the .*, the . says to expand to all the dot-files (. and .. are both directories)
+
 # Bandit Level #
 ## How to find key
