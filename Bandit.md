@@ -152,14 +152,48 @@ How the heck do we check for 1033 bytes? Each ASCII character is a byte, so if w
 The last parts should be familiar, we look for human readable with the ASCII text, grab the filename, then send it to cat with xargs. If you did this right, you should have the next key!! 
 
 
-# Bandit Level 6
+# Bandit Level 6 - find Level 7 Key
 ## The key is stored somewhere on the server and has all of the following properties:
 1. Owned by user bandit7
 2. Owned by group bandit6
 3. 33 bytes in size
 
+Let's approach this level by using the tools to tell us how to do what we want to do. 
 
+When we use the command line, we can often get information on the service we're trying to use, such as 'find'. We need to find a file that is owned by a person and a group, we already did the size on the last level, but we'll cover it again.
 
+Most services are going to have a manual and to access this manual, you type ``` man SERVICE_NAME ```, for using 'find', it would look like this: ``` man find ```. 
+
+If you just ran that command, you'll quickly see that there's a ton of information. If you've followed along this far, you'll have also used a cool thing called 'grep'. Let's leverage it's power here!!
+
+``` man find | grep 'user' ``` will provide an output for find and only show the awesome details that have 'user' in it. We can see that we need to use -user to identify a user. Run that again and search for group and finally size. Our query will look like this:
+``` find / -user bandit7 -group bandit6 -size 33c ```
+
+That gets a lot of output. A lot of 'permission denied', so an error message. In bash, we can redirect those error messages, just add in 2>/dev/null, which is a special file that's used for a data sink, meaning we write to it, but it's discarded. Standard output won't be affected, so let's add to that query.
+``` find / -user bandit7 -group bandit6 -size 33c 2>/dev/null ```
+
+Yes, I went to find what would cut the errors out since I wasn't able to find anything in the manual for find, but I will keep looking. 
+
+After sprucing up that query, we get the output /var/lib/dpkg/info/bandit7.password, so let's get that key and charlie mike!!
+
+How will you get that password? I hope you don't intend on changing directories!! Here's a hint, just cat what the output was from our query.
+
+# Bandit Level 7 - find Level 8 Key
+## The key to the next level is stored in the file data.txt, next to the word 'millionth'.
+
+Let's do this one with what we already know and can access in the system, no googling or cheating, just getting that mind to think in different ways.
+
+If you cat data.txt, you'll notice is super long and would take forever to read through. We do know what to look for, so that makes this not as hard. 
+
+If we run a quick ```man cat```, we'll see a neat option that numbers all the output lines. You can use -n or --number, but we like fast, so we'll use -n on this one. 
+
+Now, if we noticed, it seems the keys are on the same line as the words, such as millionth. Let's run cat, but tell it to number each line, then we want to grep for our hint.
+``` cat -n data.txt | grep 'millionth' ```
+
+We have the key for the next level!!
+
+# Bandit Level 8 - find Level 9 Key
+## Our key can be found in the data.txt file, but it's the only line of text that occurs only once.
 
 # Bandit Level #
 ## How to find key
