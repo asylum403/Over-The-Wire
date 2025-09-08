@@ -37,7 +37,7 @@ Might as well check out that readme file, so let's use:
 ```cat readme```
 You should find the key to the next level here!
 
-# Bandit Level 1
+# Bandit Level 1 - find Level 2 Key
 ## The key is said to be stored in a file called - and would be located in the home directory. That's right, a dash is the name.
 Let's start off the same way, with ```ls -lar``` and see what we can get. 
 
