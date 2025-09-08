@@ -45,30 +45,27 @@ Because the filename is a character, which is a placeholder for standard input (
 output the contents of the file, we need to tell cat to treat '-' as a literal filename. We can do this by giving it a path, so ~ 
 expands to the home directory, /home/YOU/-, is what we're saying when we pass the ~/- to cat and finally find our key to the next level!
 
-# Bandit Level 2
+# Bandit Level 2 - find Level 3 Key
 ## The key to the next level is in a file called --spaces in this filename-- that lives in the home directory.
 
 This is just like the last one almost, there's symbols and spaces, so we used the last method where we ran ```cat ~/-``` and since ~ isn't a key I use a lot, I wanted to find another way. 
 
 Another method to solve for cat to read the file is replacing the ~ with a . and it would look like this ```cat ./--``` and I simply Tab out to the end of the file name, if you hit Tab once and nothing happens, try using Tab twice in a quick succession and you should see an output of the files that might have naming convention clashes. It's like you cat for a file that has an almost matching name, where the first 8 characters are exactly the same and you've only entered 7 or less characters, then you would need to hit the Tab twice, but if the characters you've entered don't have a match in that directory, a single Tab will autocomplete typing out the name. 
 
-# Bandit Level 3
+# Bandit Level 3 - find Level 4 Key
 ## The key for the next level is stored in a hidden file in the inhere directory.
 
 Once in bandit3, let's grab that list. We'll run a ```ls -1a``` and we see a directory named **inhere**.
 
 When we ```ls -1a```, we see ...Hiding-From-You, which doesn't give any issues when you simply cat ...Hiding-From-You. 
 
+You can even cat the file without going into the directory by doing: ``` cat inhere/...Hiding-From-You ```. When we ran the list, we saw the directory, so just run cat on the directory and use TAB to have the system tell you what's in the directory. Sometimes it's the only file, so the single TAB can get the writeup you want.
+
 The key to the next level has been obtained. It's time to continue our quest!
 
-# Bandit Level 4
-## The key is in a hidden file in the 'inhere' directory. 
-
-Time to rock out with the first step, list everything in the directory once we change directory (cd) to the inhere directory. 
+Let's explore other ways to get this key before we leave though.
 
 If we just run the 'ls' in the inhere directory, we get nothing back. Let's add some options, run ls -1ar and you'll see a file, ...Hiding-From-You. 
-
-We've been runnign the same old stuff so far, so let's change it up. The hint says that we may need commands like file, du, or find, so let's use each one to find our hidden file. 
 
 Let's run ``` file .* ``` from in the 'inhere' directory and it will bring you the hidden file we're looking for and it also lets you know that it's a ASCII text file, which is good info to have. This means we should be able to cat and read it straight up. You'll notice the .*, the . says to expand to all the dot-files (. and .. are both directories).
 
@@ -97,12 +94,12 @@ Let's add some seasoning to that bland bit of work, ``` du -a | sort -n ```, thi
 
 Any of these methods should help you find the key! Let's keep moving shall we!
 
-# Bandit Level 5
+# Bandit Level 4 - find Level 5 Key
 ## The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.
 
 Another set of instructions telling us to find the file in the 'inhere' directory again. It's gotta be human readable, so ASCII text for sure. 
 
-Once we get in the directory 'inhere', we see quite a number of files. They all start with a dash, so 
+Once we get in the directory 'inhere', we see quite a number of files. They all start with a dash, so we'll need to escape like earlier.
 
 If you recall on that last one, we used file. File did a great job of telling us what the file type was, so let's run ``` file ./-* ```, this will use file to inspect each file's magic bytes to guess what kind of file it is (ASCII would be human readable, but data would mean binary). That last part, ./-*, will match all the files starting with the - (the ./ prefix avoids shell interpretting the file name as an option flag instead of a possible text file, which would just complain at you that you didn't fulfill the paramaters and sell your soul). 
 
@@ -133,7 +130,7 @@ Let's go a step further, let's output what we need.
 
 That's a big step isn't it, let's break it down. We know the file starts with a dash, so ``` file ./-* ``` looks for all files starting with a dash. The grep is looking for ASCII text, which will be where our key is hiding. The ``` awk ``` splits the line on the colon (so './-file07: ASCII text' becomes './-file07') then passes that filename to cat in ``` xargs cat ```. 
 
-# Bandit Level 5
+# Bandit Level 5 - find Level 6 Key
 ## The key is stored in a file swomewhere under the inhere directory and has all of the following properties:
 1. Human Readable
 2. 1033 bytes in size
