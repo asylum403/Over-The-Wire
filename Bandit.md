@@ -203,5 +203,7 @@ Sort will read each line of the document and reorder the lines in alphabetical o
 
 When we look at uniq's manual, we see an option ```-u``` which 'only print unique lines'. Since sort put all the lines in alphabetical order, uniq will automatically suppress consecutive duplicate lines. Once we add the -u option, we're telling it to only print the line that appears once in the input (data.txt file). 
 
+At the end, we end up with ``` sort data.txt | uniq -u ``` and now we're getting closer to the end!! Let's keep going!
+
 # Bandit Level #
 ## How to find key
