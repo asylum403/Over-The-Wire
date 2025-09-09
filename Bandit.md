@@ -195,5 +195,13 @@ We have the key for the next level!!
 # Bandit Level 8 - find Level 9 Key
 ## Our key can be found in the data.txt file, but it's the only line of text that occurs only once.
 
+We have some options, so let's look at sort and uniq. If you want the full manual, run ```man SERVICE``` and you can get the manual. Use grep to filter to what you might need. 
+
+Let's look at sort and see what we can find. 
+
+Sort will read each line of the document and reorder the lines in alphabetical order. It's like making each line a key for sorting and uses it to compare the text of each line to that line's left and right. If 2 lines are identical, they would be right next to one another. It's important we use this first, else uniq won't work.
+
+When we look at uniq's manual, we see an option ```-u``` which 'only print unique lines'. Since sort put all the lines in alphabetical order, uniq will automatically suppress consecutive duplicate lines. Once we add the -u option, we're telling it to only print the line that appears once in the input (data.txt file). 
+
 # Bandit Level #
 ## How to find key
